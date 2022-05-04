@@ -16,7 +16,7 @@
   </canvas>
   <!-- You can also require other files to run in this process -->
   <script src="./renderer.js"></script>
-  <script type="module" src="./src/core.js"></script>
+  <script type="module" src="./src/game/game.js"></script>
   <script type="x-shader/x-vertex" id="VertexShader">
     // this is the vertex shader
     attribute vec3 aVertexPosition; // Expects one vertex position
@@ -28,7 +28,7 @@
     }
     // End of vertex shader
     </script>
-    <script type="x-shader/x-fragment" id="FragmentShader">
+  <script type="x-shader/x-fragment" id="FragmentShader">
       // this is the fragment (or pixel) shader
       void main(void) {
       // for every pixel called (within the square) sets
