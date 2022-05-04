@@ -36,8 +36,8 @@ function drawSquare() {
 let mShader = null;
 function createShader() {
     mShader = new SimpleShader(
-        "VertexShader", // IDs of the script tag in the index.html
-        "FragmentShader"); //
+        "src/glsl_shaders/simple_vs.glsl", // Path to VertexShader
+        "src/glsl_shaders/white_fs.glsl"); // Path to FragmentShader
 }
 
 function init(htmlCanvasID) {
