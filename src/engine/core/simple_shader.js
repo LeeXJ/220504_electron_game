@@ -1,4 +1,4 @@
-import * as core from "./core.js";
+import * as core from "./gl.js";
 import * as vertexBuffer from "./vertex_buffer.js";
 
 class SimpleShader {
@@ -8,7 +8,7 @@ class SimpleShader {
         this.mPixelColorRef = null; // pixelColor uniform in fragment shader
         this.mCompiledShader = null; // ref to compiled shader in webgl
         this.mVertexPositionRef = null; // ref to VertexPosition in shader
-        let gl = core.getGL();
+        let gl = core.get();
         // Step A: load and compile vertex and fragment shaders
         this.mVertexShader = loadAndCompileShader(vertexShaderID,
             gl.VERTEX_SHADER);
@@ -33,7 +33,7 @@ class SimpleShader {
     }
 
     activate(pixelColor) {
-        let gl = core.getGL();
+        let gl = core.get();
         gl.useProgram(this.mCompiledShader);
         // bind vertex buffer
         gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer.get());
@@ -51,7 +51,7 @@ class SimpleShader {
 
 function loadAndCompileShader(filePath, shaderType) {
     let xmlReq, shaderSource = null, compiledShader = null;
-    let gl = core.getGL();
+    let gl = core.get();
     // Step A: Request the text from the given file location.
     xmlReq = new XMLHttpRequest();
     xmlReq.open('GET', filePath, false);
