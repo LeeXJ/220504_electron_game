@@ -25,10 +25,10 @@ function clearCanvas(color) {
     mGL.clear(mGL.COLOR_BUFFER_BIT); // clear to the color set
 }
 
-function drawSquare() {
+function drawSquare(color) {
     // Step A: Activate the shader
-    mShader.activate();
-    // Step B. draw with the above settings
+    mShader.activate(color);
+    // Step B: Draw with currently activated geometry and shader
     mGL.drawArrays(mGL.TRIANGLE_STRIP, 0, 4);
 }
 
@@ -37,7 +37,7 @@ let mShader = null;
 function createShader() {
     mShader = new SimpleShader(
         "src/glsl_shaders/simple_vs.glsl", // Path to VertexShader
-        "src/glsl_shaders/white_fs.glsl"); // Path to FragmentShader
+        "src/glsl_shaders/simple_fs.glsl"); // Path to FragmentShader
 }
 
 function init(htmlCanvasID) {

@@ -5,6 +5,7 @@ class SimpleShader {
     constructor(vertexShaderID, fragmentShaderID) {
         // instance variables
         // Convention: all instance variables: mVariables
+        this.mPixelColorRef = null; // pixelColor uniform in fragment shader
         this.mCompiledShader = null; // ref to compiled shader in webgl
         this.mVertexPositionRef = null; // ref to VertexPosition in shader
         let gl = core.getGL();
@@ -26,9 +27,12 @@ class SimpleShader {
         // Step D: reference to aVertexPosition attribute in the shaders
         this.mVertexPositionRef = gl.getAttribLocation(
             this.mCompiledShader, "aVertexPosition");
+        // Step E: Gets uniform variable uPixelColor in fragment shader
+        this.mPixelColorRef = gl.getUniformLocation(
+            this.mCompiledShader, "uPixelColor");
     }
 
-    activate() {
+    activate(pixelColor) {
         let gl = core.getGL();
         gl.useProgram(this.mCompiledShader);
         // bind vertex buffer
@@ -40,6 +44,8 @@ class SimpleShader {
             0, // number of bytes to skip in between elements
             0); // offsets to the first element
         gl.enableVertexAttribArray(this.mVertexPositionRef);
+        // load uniforms
+        gl.uniform4fv(this.mPixelColorRef, pixelColor);
     }
 }
 

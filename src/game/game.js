@@ -5,9 +5,9 @@ class MyGame {
         // Step A: Initialize the game engine
         engine.init(htmlCanvasID);
         // Step B: Clear the canvas
-        engine.clearCanvas([0, 0.8, 0, 1]);
-        // Step C: Draw the square
-        engine.drawSquare();
+        engine.clearCanvas([0.5, 0.5, 0.5, 1]);
+        // Step C: Draw the square in red
+        engine.drawSquare([0, 0, 0, 1]);
     }
 }
 
